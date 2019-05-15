@@ -15,10 +15,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/admin', function () {
-    return view('admin.admin');
+
+Route::group(['prefix'=>'admin'], function(){
+    Route::get('/', 'AdminController@index')->name('admin');
+    Route::get('/siswa', 'UserController@index')->name('tampil.siswa');
+    Route::get('/addsiswa', 'UserController@tampilSiswa')->name('tambah.user');
+    Route::post('/addsiswa', 'UserController@tambahSiswa')->name('insert.user');
+    Route::get('/guru', 'UserController@indexGuru')->name('tampil.guru');
+    Route::get('/addguru', 'UserController@tambahGuru')->name('tambah.guru');
+    Route::post('/addguru', 'UserController@addGuru')->name('insert.guru');
+    Route::get('/siswa/{id}', 'UserController@tambahDetailSiswa');
 });
 
 Route::resource('/jurusan', 'jurusanController');
 
 Route::get('/table/jurusan', 'jurusanController@dataTable')->name('table.jurusan');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

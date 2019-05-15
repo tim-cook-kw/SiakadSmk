@@ -6,6 +6,8 @@
                 <li class="active">
                     <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
+                <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.siswa')}}">Siswa</a></li>
+                <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.guru')}}">Guru</a></li>
                 <li class="menu-title">UI elements</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Components</a>
