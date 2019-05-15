@@ -12,7 +12,7 @@
                             <a href="index.html"><img src="{{asset('img/core-img/logo.png')}}" alt=""></a>
                         </div>
                         <div class="login-content">
-                            <a href="#">Login</a>
+                            <a href="{{ route('login') }}">Login</a>
                         </div>
                     </div>
                 </div>

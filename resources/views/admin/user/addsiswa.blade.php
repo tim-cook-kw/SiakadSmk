@@ -1,5 +1,6 @@
 @extends('page/app_admin');
 @section('content')
+<div class="container">
 <form action="{{Route('insert.user')}}" method="post">
 @csrf
 <div class="form-group">
@@ -21,4 +22,5 @@
   <input type="hidden" name="status" value="3">
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+</div>
 @endsection
