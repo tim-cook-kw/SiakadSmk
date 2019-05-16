@@ -34,4 +34,26 @@ class InfoSekolahController extends Controller
     {
         return str_random(32) . '.' . $file->extension();
     }
+    public function editInfoSekolah($id){
+        $sekolah = InfoSekolah::find($id);
+        return view('admin.editinfosekolah', compact('sekolah'));
+    }
+    public function updateInfoSekolah(Request $request, $id){
+        $filename = $this->getFileName($request->logo);
+        $request->logo->move(base_path('public/images'), $filename);
+        $sekolah = InfoSekolah::find($id);
+        $sekolah->nama = $request->get('name');
+        $sekolah->web = $request->get('web');
+        $sekolah->email = $request->get('email');
+        $sekolah->nama_kepsek = $request->get('kepsek');
+        $sekolah->nip_kepsek = $request->get('nip');
+        $sekolah->logo = $filename;
+        $sekolah->visi = $request->get('visi');
+        $sekolah->misi = $request->get('misi');
+        $sekolah->alamat = $request->get('alamat');
+        $sekolah->no_telepon = $request->get('no_telp');
+        $sekolah->save();
+        return redirect()->route('insert.infosekolah');
+
+    }
 }

@@ -45,6 +45,7 @@
   <label for="logo">Logo Sekolah</label>
   <img src="{{url('images', $infosekolah->logo)}}" alt="" style="max-width:200px;max-height:200px;">
   </div>
+  <a href="{{Route('edit.sekolah', $infosekolah->id)}}" class="btn btn-primary btn-sm inline mb-1">Edit</a>
 
 @empty
 <form action="{{Route('insert.infosekolah')}}" method="post" enctype="multipart/form-data">
