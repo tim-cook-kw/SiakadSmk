@@ -25,6 +25,8 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/addguru', 'UserController@tambahGuru')->name('tambah.guru');
     Route::post('/addguru', 'UserController@addGuru')->name('insert.guru');
     Route::get('/siswa/{id}', 'UserController@tambahDetailSiswa');
+    Route::get('/infosekolah', 'InfoSekolahController@index')->name('infosekolah.index');
+    Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
 });
 
 Route::resource('/jurusan', 'jurusanController');
