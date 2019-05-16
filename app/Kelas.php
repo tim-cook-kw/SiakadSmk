@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mapel extends Model
+class Kelas extends Model
 {
 
     protected $fillable = [
-        'nama_mapel',
-        'id_jurusan'
+        'id_jurusan',
+        'nama_kelas',
+        'level'
     ];
-    protected $table = 'mata_pelajaran';
+    protected $table = 'kelas';
 
     public function jurusan()
     {

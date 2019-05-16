@@ -44,6 +44,14 @@ Route::group(['prefix'=>'admin'], function(){
     Route::post('/editmapel/{id}', 'MapelController@update')->name('update.mapel');
     /**============================= END Routing Mapel =============================**/
 
+    /**============================= Routing Kelas =============================**/
+    Route::get('/kelas', 'KelasController@index')->name('tampil.kelas');
+    Route::get('/addkelas', 'KelasController@create')->name('tambah.kelas');
+    Route::post('/addkelas', 'KelasController@store')->name('insert.kelas');
+    Route::delete('/deletekelas/{id}', 'KelasController@destroy')->name('delete.kelas');
+    Route::get('/editkelas/{id}', 'KelasController@edit')->name('edit.kelas');
+    Route::post('/editkelas/{id}', 'KelasController@update')->name('update.kelas');
+    /**============================= END Routing Kelas =============================**/
 
 });
 

@@ -67,7 +67,8 @@ class MapelController extends Controller
     public function edit($id)
     {
         $mapel = Mapel::find($id);
-        return view('admin.mapel.editmapel', compact('mapel'));
+        $jurusans = Jurusan::all();
+        return view('admin.mapel.editmapel', compact('mapel', 'jurusans'));
     }
 
     /**
@@ -88,7 +89,7 @@ class MapelController extends Controller
         $mapel = Mapel::find($id);
         $mapel->nama_mapel =  $request->get('nama_mapel');
         $mapel->id_jurusan = $request->get('id_jurusan');
-        $jurusan->save();
+        $mapel->save();
 
         return redirect('/admin/mapel')->with('success', 'Jurusan updated!');
     }

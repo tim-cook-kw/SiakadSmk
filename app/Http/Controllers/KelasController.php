@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Jurusan;
-use App\Mapel;
+use App\kelas;
 use Illuminate\Http\Request;
 
-class MapelController extends Controller
+class KelasController extends Controller
 {
     public function index()
     {
-        $mapels = Mapel::with('jurusan')->get();
+        $kelass = kelas::with('jurusan')->get();
         $jurusans = Jurusan::all();
-        return view('admin.mapel.mapel', compact('jurusans', 'mapels'));
+        return view('admin.kelas.kelas', compact('jurusans', 'kelass'));
     }
 
     /**
@@ -23,7 +23,7 @@ class MapelController extends Controller
     public function create()
     {
         $jurusans = Jurusan::all();
-        return view('admin.mapel.addmapel', compact('jurusans'));
+        return view('admin.kelas.addkelas', compact('jurusans'));
     }
 
     /**
@@ -35,16 +35,18 @@ class MapelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_mapel'=>'required',
-            'id_jurusan'=>'required'
+            'id_jurusan'=>'required',
+            'nama_kelas'=>'required',
+            'level'=>'required'
         ]);
 
-        $mapel = new Mapel([
-            'nama_mapel' => $request->get('nama_mapel'),
-            'id_jurusan' => $request->get('id_jurusan')
+        $kelas = new kelas([
+            'id_jurusan' => $request->get('id_jurusan'),
+            'nama_kelas' => $request->get('nama_kelas'),
+            'level' => $request->get('level')
         ]);
-        $mapel->save();
-        return redirect('/admin/mapel')->with('success', 'Jurusan saved!');
+        $kelas->save();
+        return redirect('/admin/kelas')->with('success', 'Jurusan saved!');
     }
 
     /**
@@ -66,8 +68,9 @@ class MapelController extends Controller
      */
     public function edit($id)
     {
-        $mapel = Mapel::find($id);
-        return view('admin.mapel.editmapel', compact('mapel'));
+        $jurusans = Jurusan::all();
+        $kelas = kelas::find($id);
+        return view('admin.kelas.editkelas', compact('kelas', 'jurusans'));
     }
 
     /**
@@ -80,17 +83,19 @@ class MapelController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_mapel'=>'required',
-            'id_jurusan'=>'required'
+            'id_jurusan'=>'required',
+            'nama_kelas'=>'required',
+            'level' => 'required'
         ]);
 
 
-        $mapel = Mapel::find($id);
-        $mapel->nama_mapel =  $request->get('nama_mapel');
-        $mapel->id_jurusan = $request->get('id_jurusan');
-        $jurusan->save();
+        $kelas = kelas::find($id);
+        $kelas->id_jurusan = $request->get('id_jurusan');
+        $kelas->nama_kelas =  $request->get('nama_kelas');
+        $kelas->level =  $request->get('level');
+        $kelas->save();
 
-        return redirect('/admin/mapel')->with('success', 'Jurusan updated!');
+        return redirect('/admin/kelas')->with('success', 'Jurusan updated!');
     }
 
     /**
@@ -101,9 +106,9 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        $mapel = Mapel::find($id);
-        $mapel->delete();
+        $kelas = kelas::find($id);
+        $kelas->delete();
 
-        return redirect('/admin/mapel')->with('success', 'Mapel deleted!');
+        return redirect('/admin/kelas')->with('success', 'kelas deleted!');
     }
 }
