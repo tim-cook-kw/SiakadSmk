@@ -1,6 +1,6 @@
 @extends('page/app_admin');
 @section('content')
-<div>
+<div class="container">
 <h3 class="panel-title">
   TambahDetailSiswa
 </h3>
@@ -32,9 +32,32 @@
   </div>
   <div class="form-group">
     <label for="email">Nomor Induk Siswa</label>
-    <input type="number" name="nip" class="form-control" id="nip" value="{{$siswa->nip}}" disabled>
+    <input type="number" name="nis" class="form-control" id="nip" value="{{$siswa->nip}}" disabled>
   </div>
-  
+  <div class="form-group">
+    <label for="email">Nomor Induk Siswa Nasional</label>
+    <input type="number" name="nisn" class="form-control" id="nip">
+  </div>
+  <div class="form-group">
+    <label for="email">Tempat Lahir</label>
+    <input type="text" name="tempat" class="form-control" id="nip">
+  </div>
+  <div class="form-group">
+    <label for="email">Tanggal Lahir</label>
+    <input type="date" name="tanggallahir" class="form-control" id="nip">
+  </div>
+  <div class="form-group">
+    <label for="email">Nomor Telepon</label>
+    <input type="number" name="telp" class="form-control" id="nip">
+  </div>
+  <div class="form-group">
+    <label for="email">Nama Ayah</label>
+    <input type="text" name="telp" class="form-control" id="nip">
+  </div>
+  <div class="form-group">
+    <label for="email">Nama ibu</label>
+    <input type="text" name="telp" class="form-control" id="nip">
+  </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 </div>

@@ -30,6 +30,6 @@ Route::group(['prefix'=>'admin'], function(){
 Route::resource('/jurusan', 'jurusanController');
 
 Route::get('/table/jurusan', 'jurusanController@dataTable')->name('table.jurusan');
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

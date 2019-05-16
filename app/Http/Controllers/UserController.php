@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Siswa;
 
