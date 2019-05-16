@@ -8,7 +8,10 @@
                 </li>
                 <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.siswa')}}">Siswa</a></li>
                 <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.guru')}}">Guru</a></li>
-                <li class="menu-title"><a href="{{Route('infosekolah.index')}}">Info Sekolah</a></li>
+                <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.jurusan')}}">Jurusan</a></li>
+                <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.mapel')}}">Mapel</a></li>
+                <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('infosekolah.index')}}">Info Sekolah</a></li>
+
                 <li class="menu-title">UI elements</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Components</a>

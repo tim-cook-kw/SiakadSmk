@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mapel extends Model
 {
+
     protected $fillable = [
         'nama_mapel',
         'id_jurusan'
@@ -14,6 +15,6 @@ class Mapel extends Model
 
     public function jurusan()
     {
-        return $this->belongsTo(Jurusan::class,'id_jurusan');
+        return $this->belongsTo('App\Jurusan', 'id_jurusan');
     }
 }

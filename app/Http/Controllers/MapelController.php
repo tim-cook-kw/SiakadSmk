@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Jurusan;
+use App\Mapel;
 use Illuminate\Http\Request;
-use DataTables;
 
-class jurusanController extends Controller
+class MapelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-       return view('admin.jurusan');
+        $mapels = Mapel::with('jurusan')->get();
+        $jurusans = Jurusan::all();
+        return view('admin.mapel.mapel', compact('jurusans', 'mapels'));
     }
 
     /**
@@ -25,7 +22,8 @@ class jurusanController extends Controller
      */
     public function create()
     {
-        //
+        $jurusans = Jurusan::all();
+        return view('admin.mapel.addmapel', compact('jurusans'));
     }
 
     /**
@@ -36,7 +34,17 @@ class jurusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_mapel'=>'required',
+            'id_jurusan'=>'required'
+        ]);
+
+        $mapel = new Mapel([
+            'nama_mapel' => $request->get('nama_mapel'),
+            'id_jurusan' => $request->get('id_jurusan')
+        ]);
+        $mapel->save();
+        return redirect('/admin/mapel')->with('success', 'Jurusan saved!');
     }
 
     /**
@@ -58,7 +66,8 @@ class jurusanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mapel = Mapel::find($id);
+        return view('admin.mapel.editmapel', compact('mapel'));
     }
 
     /**
@@ -70,7 +79,18 @@ class jurusanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_mapel'=>'required',
+            'id_jurusan'=>'required'
+        ]);
+
+
+        $mapel = Mapel::find($id);
+        $mapel->nama_mapel =  $request->get('nama_mapel');
+        $mapel->id_jurusan = $request->get('id_jurusan');
+        $jurusan->save();
+
+        return redirect('/admin/mapel')->with('success', 'Jurusan updated!');
     }
 
     /**
@@ -81,23 +101,9 @@ class jurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function dataTable(){
-        $model = Jurusan::query();
-        return DataTables::of($model)
-            ->addColumn('action', function ($model){
-                return view('#', [
-                    'model' => $model,
-                    'url_show' => route('jurusan.show', $model->id),
-                    'url_edit' => route('jurusan.edit', $model->id),
-                    'url_destroy' => route('jurusan.destroy', $model->id)
-                ]);
-            })
-            ->addIndexColumn()
-            ->rawColumns(['action'])
-            ->make(true);
+        $mapel = Mapel::find($id);
+        $mapel->delete();
+
+        return redirect('/admin/mapel')->with('success', 'Mapel deleted!');
     }
 }
-
-

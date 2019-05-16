@@ -35,7 +35,7 @@ class UserController extends Controller
     public function tambahGuru(){
         return view('admin.user.addguru');
     }
-    public function addGuru(){
+    public function addGuru(Request $request){
         DB::select('call insertUser(?, ?, ?, ?, ?)',[
             $request->input('name'),
             $request->input('email'),
