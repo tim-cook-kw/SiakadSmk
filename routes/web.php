@@ -25,6 +25,7 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/addguru', 'UserController@tambahGuru')->name('tambah.guru');
     Route::post('/addguru', 'UserController@addGuru')->name('insert.guru');
     Route::get('/siswa/{id}', 'UserController@tambahDetailSiswa');
+    Route::post('/siswa', 'UserController@insertDetailSiswa')->name('insert.siswa');
     Route::get('/infosekolah', 'InfoSekolahController@index')->name('infosekolah.index');
     Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
     Route::get('/infosekolah/{id}', 'InfoSekolahController@editInfoSekolah')->name('edit.sekolah');
@@ -47,19 +48,21 @@ Route::group(['prefix'=>'admin'], function(){
      Route::get('/editmapel/{id}', 'MapelController@edit')->name('edit.mapel');
      Route::post('/editmapel/{id}', 'MapelController@update')->name('update.mapel');
      /**============================= END Routing Mapel =============================**/
-});
+      /**============================= Routing Kelas =============================**/
+      Route::get('/kelas', 'KelasController@index')->name('tampil.kelas');
+      Route::get('/addkelas', 'KelasController@create')->name('tambah.kelas');
+      Route::post('/addkelas', 'KelasController@store')->name('insert.kelas');
+      Route::delete('/deletekelas/{id}', 'KelasController@destroy')->name('delete.kelas');
+      Route::get('/editkelas/{id}', 'KelasController@edit')->name('edit.kelas');
+      Route::post('/editkelas/{id}', 'KelasController@update')->name('update.kelas');
+      /**============================= END Routing Kelas =============================**/
+    });
+    Route::Auth();
 
    
 
 
-    /**============================= Routing Kelas =============================**/
-    Route::get('/kelas', 'KelasController@index')->name('tampil.kelas');
-    Route::get('/addkelas', 'KelasController@create')->name('tambah.kelas');
-    Route::post('/addkelas', 'KelasController@store')->name('insert.kelas');
-    Route::delete('/deletekelas/{id}', 'KelasController@destroy')->name('delete.kelas');
-    Route::get('/editkelas/{id}', 'KelasController@edit')->name('edit.kelas');
-    Route::post('/editkelas/{id}', 'KelasController@update')->name('update.kelas');
-    /**============================= END Routing Kelas =============================**/
+  
 
 
 

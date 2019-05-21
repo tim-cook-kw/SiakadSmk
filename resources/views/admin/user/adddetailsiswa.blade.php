@@ -4,24 +4,15 @@
 <h3 class="panel-title">
   TambahDetailSiswa
 </h3>
-<div class="row">
-   <div class="small-12 medium-2 large-2 columns">
-     <div class="circle">
-       <!-- User Profile Image -->
-       <img class="profile-pic" style="max-width:200px;max-height:200px;float:left;"  src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">
 
-       <!-- Default Image -->
-       <!-- <i class="fa fa-user fa-5x"></i> -->
-     </div>
-     <div class="p-image">
-       <i class="fa fa-camera upload-button"></i>
-        <input class="file-upload" type="file" accept="image/*"/>
-     </div>
-  </div>
-</div>
-<form action="{{Route('insert.user')}}" method="post">
+<form action="{{Route('insert.siswa')}}" method="post" enctype="multipart/form-data">
 @csrf
-
+<img class="profile-pic" style="max-width:200px;max-height:200px;float:left;"  src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">
+<div class="p-image">
+       <i class="fa fa-camera upload-button"></i>
+        <input class="file-upload" type="file" accept="image/*" name="image"/>
+     </div>
+     <input type="hidden" name="id_user" value="{{$siswa->id}}">
 <div class="form-group">
     <label for="name">Nama</label>
     <input  type="text" name="name" class="form-control" value="{{$siswa->name}}" id="name" disabled>
@@ -39,6 +30,13 @@
     <input type="number" name="nisn" class="form-control" id="nip">
   </div>
   <div class="form-group">
+            <label for="id_jurusan">Jenis Kelamin</label>
+            <select name="jenis" id="id_jurusan" class="form-control">
+                <option value="Laki-Laki">Laki-Laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+            </div>
+  <div class="form-group">
     <label for="email">Tempat Lahir</label>
     <input type="text" name="tempat" class="form-control" id="nip">
   </div>
@@ -52,12 +50,38 @@
   </div>
   <div class="form-group">
     <label for="email">Nama Ayah</label>
-    <input type="text" name="telp" class="form-control" id="nip">
+    <input type="text" name="ayah" class="form-control" id="nip">
   </div>
   <div class="form-group">
     <label for="email">Nama ibu</label>
-    <input type="text" name="telp" class="form-control" id="nip">
+    <input type="text" name="ibu" class="form-control" id="nip">
   </div>
+  <div class="form-group">
+            <label for="id_jurusan">Agama</label>
+            <select name="agama" id="id_jurusan" class="form-control">
+                <option value="islam">Islam</option>
+                <option value="kristen">Kristen</option>
+                <option value="budha">Budha</option>
+                <option value="hindu">Hindu</option>
+                <option value="konghucu">Konghucu</option>
+            </select>
+            </div>
+  <div class="form-group">
+            <label for="id_jurusan">Jurusan</label>
+            <select name="id_jurusan" id="id_jurusan" class="form-control">
+                @foreach($jurusan as $jurusans)
+                    <option value="{{$jurusans->id}}"> {{ $jurusans->nama_jurusan }}</option>
+                @endforeach
+            </select>
+            </div>
+            <div class="form-group">
+            <label for="id_jurusan">Kelas</label>
+            <select name="id_kelas" id="id_kelas" class="form-control">
+                @foreach($kelas as $kelass)
+                    <option value="{{$jurusans->id_kelas}}"> {{ $kelass->nama_kelas }}</option>
+                @endforeach
+            </select>
+            </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 </div>

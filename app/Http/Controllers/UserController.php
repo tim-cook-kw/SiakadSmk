@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Image;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Siswa;
+use App\Jurusan;
+use App\Kelas;
+
 
 class UserController extends Controller
 {
@@ -47,6 +50,35 @@ class UserController extends Controller
     }
     public function tambahDetailSiswa($id){
         $siswa = User::where('id', $id)->first();
-        return view ('admin.user.adddetailsiswa', compact('siswa'));
+        $jurusan = Jurusan::all();
+        $kelas = Kelas::all();
+        return view ('admin.user.adddetailsiswa', compact('siswa', 'jurusan', 'kelas'));
     }
+    public function insertDetailSiswa(Request $request){
+        $filename = $this->getFileName($request->image);
+        $request->image->move(base_path('public/siswa'), $filename);
+        $siswa = new Kelas([
+            'id_jurusan' => $request->get('id_jurusan'),
+            'id_kelas' => $request->get('id_kelas'),
+            'nama' => $request->get('name'),
+            'NIS' => $request->get('nis'),
+            'NISN' => $request->get('nisn'),
+            'jenis_kelamin' => $request->get('jenis'),
+            'agama' => $request->get('agama'),
+            'foto' => $filename,
+            'tempat_lahir' => $request->get('tempat'),
+            'tanggal_lahir' => $request->get('tanggallahir'),
+            'ayah' => $request->get('ayah'),
+            'ibu' => $request->get('ibu'),
+            'no_telepon'=> $request->get('telp'),
+            'id_user'=> $request->get('id_user'),
+        ]);
+        $siswa->save();
+        return redirect()->route('tampil.siswa');
+    }
+    protected function getFileName($file)
+    {
+        return str_random(32) . '.' . $file->extension();
+    }
+    
 }
