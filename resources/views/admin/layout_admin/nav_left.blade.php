@@ -10,9 +10,6 @@
                 <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.guru')}}">Guru</a></li>
                 <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.jurusan')}}">Jurusan</a></li>
                 <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.mapel')}}">Mapel</a></li>
-<<<<<<< HEAD
-                <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.kelas')}}">Kelas</a></li>
-=======
                 <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('infosekolah.index')}}">Info Sekolah</a></li>
 
 >>>>>>> a47ab59f92ad447da1de3de6827af1ce445dbfab
