@@ -25,10 +25,6 @@ class Siswa extends Model
         'id_user'
     ];
     
-    public function user()
-    {
-        return $this->belongsTo('App\User', 'id');
-    }
     public function jurusan()
     {
         return $this->belongsTo('App\Jurusan', 'id_jurusan');

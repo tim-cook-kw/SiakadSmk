@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Image;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Hash;
@@ -9,6 +8,7 @@ use App\User;
 use App\Siswa;
 use App\Jurusan;
 use App\Kelas;
+use Image;
 
 
 class UserController extends Controller
@@ -57,7 +57,7 @@ class UserController extends Controller
     public function insertDetailSiswa(Request $request){
         $filename = $this->getFileName($request->image);
         $request->image->move(base_path('public/siswa'), $filename);
-        $siswa = new Kelas([
+        $siswa = new Siswa([
             'id_jurusan' => $request->get('id_jurusan'),
             'id_kelas' => $request->get('id_kelas'),
             'nama' => $request->get('name'),

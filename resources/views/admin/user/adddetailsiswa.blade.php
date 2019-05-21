@@ -16,6 +16,7 @@
 <div class="form-group">
     <label for="name">Nama</label>
     <input  type="text" name="name" class="form-control" value="{{$siswa->name}}" id="name" disabled>
+    <input  type="hidden" name="name" class="form-control" value="{{$siswa->name}}" id="name">
   </div>
   <div class="form-group">
     <label for="email">Email</label>
@@ -24,6 +25,7 @@
   <div class="form-group">
     <label for="email">Nomor Induk Siswa</label>
     <input type="number" name="nis" class="form-control" id="nip" value="{{$siswa->nip}}" disabled>
+    <input type="hidden" name="nis" class="form-control" id="nip" value="{{$siswa->nip}}">
   </div>
   <div class="form-group">
     <label for="email">Nomor Induk Siswa Nasional</label>
@@ -76,11 +78,13 @@
             </div>
             <div class="form-group">
             <label for="id_jurusan">Kelas</label>
+            
             <select name="id_kelas" id="id_kelas" class="form-control">
-                @foreach($kelas as $kelass)
-                    <option value="{{$jurusans->id_kelas}}"> {{ $kelass->nama_kelas }}</option>
-                @endforeach
+            @foreach($kelas as $kelass)
+                    <option value="{{$kelass->id}}"> {{ $kelass->nama_kelas }}</option>
+                    @endforeach
             </select>
+            
             </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>

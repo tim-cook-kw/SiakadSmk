@@ -28,13 +28,13 @@ class CreateSiswaTable extends Migration
             $table->string('ayah');
             $table->string('ibu');
             $table->integer('no_telepon');
-            $table->integer('id_user')->unsigned();
+            $table->integer('id_user');
             $table->timestamps();
 
 
             $table->foreign('id_jurusan')->references('id')->on('jurusan');
             $table->foreign('id_kelas')->references('id')->on('kelas');
-            $table->foreign('id_user')->references('id')->on('user');
+            
         });
     }
 
