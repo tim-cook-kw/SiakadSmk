@@ -24,7 +24,16 @@
         <td>{{$users->name}}</td>
         <td>{{$users->email}}</td>
         <td>{{$users->nip}}</td>
-        <td><a href="{{ url('/admin/siswa/' . $users->id) }}" class="btn btn-success pull-right modal-show" title="Create User"><i class="icon-plus"></i>Tambah Detail</a></td>
+        <td>
+        @foreach($siswa as $siswas)
+        @if($users->id == $siswas->id_user)
+        <a href="" class="btn btn-success pull-right modal-show mx-1" title="Create User"><i class="icon-plus"></i>Lihat Detail</a>
+        <a href="{{ url('/admin/siswa/edit/' . $users->id) }}" class="btn btn-success pull-right modal-show" title="Create User"><i class="icon-plus"></i>Edit Detail</a>
+        @else
+        <a href="{{ url('/admin/siswa/' . $users->id) }}" class="btn btn-success pull-right modal-show" title="Create User"><i class="icon-plus"></i>Tambah Detail</a>
+        @endif
+        @endforeach
+        </td>
       </tr>
       @endforeach
     </tbody>

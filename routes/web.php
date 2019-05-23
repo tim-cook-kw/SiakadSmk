@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/siswa', 'UserController@index')->name('tampil.siswa');
     Route::get('/addsiswa', 'UserController@tampilSiswa')->name('tambah.user');
@@ -30,6 +30,8 @@ Route::group(['prefix'=>'admin'], function(){
     Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
     Route::get('/infosekolah/{id}', 'InfoSekolahController@editInfoSekolah')->name('edit.sekolah');
     Route::post('/infosekolah/{id}', 'InfoSekolahController@updateInfoSekolah')->name('update.sekolah');
+    Route::get('/siswa/edit/{id}', 'UserController@indexEditDetailSiswa');
+    Route::put('/siswa/edit/{id}', 'UserController@editDetailSiswa')->name('edit.siswa');
 
      /**============================= Routing Jurusan =============================**/
      Route::get('/jurusan', 'JurusanController@index')->name('tampil.jurusan');
@@ -57,7 +59,7 @@ Route::group(['prefix'=>'admin'], function(){
       Route::post('/editkelas/{id}', 'KelasController@update')->name('update.kelas');
       /**============================= END Routing Kelas =============================**/
     });
-    Route::Auth();
+    Route::Auth(['register'=>false]);
 
    
 

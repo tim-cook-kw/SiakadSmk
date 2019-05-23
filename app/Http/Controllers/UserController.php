@@ -14,8 +14,9 @@ use Image;
 class UserController extends Controller
 {
     public function index(){
+        $siswa = Siswa::all();
         $user = DB::table('users')->where('status','3')->get();
-        return view('admin.user.siswa', compact('user'));
+        return view('admin.user.siswa', compact('user', 'siswa'));
     }
     public function tampilSiswa(){
         return view('admin.user.addsiswa');
@@ -79,6 +80,47 @@ class UserController extends Controller
     protected function getFileName($file)
     {
         return str_random(32) . '.' . $file->extension();
+    }
+    public function indexEditDetailSiswa($id){
+        $siswa = Siswa::where('id', $id)->first();
+        $kelas = Kelas::all();
+        $jurusan = Jurusan::all();
+        return view('admin.user.editdetailsiswa', compact('siswa', 'kelas', 'jurusan'));
+    }
+    public function editDetailSiswa(Request $request, $id){
+        $filename = $request->get('name_image');
+        $image = $request->file('image');
+        if($image != ''){
+            $request->validate([
+            'image' => 'image|max:2048',
+            'id_user'=> 'required'
+            ]);
+            $image->move(public_path('siswa'), $filename);
+        }else{
+            $request->validate([
+                'id_user'=> 'required'
+                ]);
+        }
+        $siswa = array(
+            'id_jurusan' => $request->get('id_jurusan'),
+            'id_kelas' => $request->get('id_kelas'),
+            'nama' => $request->get('name'),
+            'NIS' => $request->get('nis'),
+            'NISN' => $request->get('nisn'),
+            'jenis_kelamin' => $request->get('jenis'),
+            'agama' => $request->get('agama'),
+            'foto' => $filename,
+            'tempat_lahir' => $request->get('tempat'),
+            'tanggal_lahir' => $request->get('tanggallahir'),
+            'ayah' => $request->get('ayah'),
+            'ibu' => $request->get('ibu'),
+            'no_telepon'=> $request->get('telp'),
+            'id_user'=> $request->get('id_user'),
+        );
+        Siswa::whereId($id)->update($siswa);
+        
+       
+        return redirect()->route('tampil.siswa');
     }
     
 }
