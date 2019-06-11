@@ -50,6 +50,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::get('/editmapel/{id}', 'MapelController@edit')->name('edit.mapel');
      Route::post('/editmapel/{id}', 'MapelController@update')->name('update.mapel');
      /**============================= END Routing Mapel =============================**/
+
       /**============================= Routing Kelas =============================**/
       Route::get('/kelas', 'KelasController@index')->name('tampil.kelas');
       Route::get('/addkelas', 'KelasController@create')->name('tambah.kelas');
@@ -58,14 +59,23 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
       Route::get('/editkelas/{id}', 'KelasController@edit')->name('edit.kelas');
       Route::post('/editkelas/{id}', 'KelasController@update')->name('update.kelas');
       /**============================= END Routing Kelas =============================**/
+
+      /**============================= Routing Tag =============================**/
+      Route::get('/tag', 'TagController@index')->name('tampil.tag');
+      Route::get('/addtag', 'TagController@create')->name('tambah.tag');
+      Route::post('/addtag', 'TagController@store')->name('insert.tag');
+      Route::delete('/deletetag/{id}', 'TagController@destroy')->name('delete.tag');
+      /**============================= END Routing Tag =============================**/
+
+     /**============================= Routing Berita =============================**/
+     Route::get('/berita', 'BeritaController@index')->name('tampil.berita');
+     Route::get('/addberita', 'BeritaController@create')->name('tambah.berita');
+     Route::post('/addberita', 'BeritaController@store')->name('insert.berita');
+     Route::delete('/deleteberita/{id}', 'BeritaController@destroy')->name('delete.berita');
+     Route::get('/editberita/{id}', 'BeritaController@edit')->name('edit.berita');
+     Route::post('/editberita/{id}', 'BeritaController@update')->name('update.berita');
+     /**============================= END Routing Berita =============================**/
     });
     Route::Auth(['register'=>false]);
-
-   
-
-
-  
-
-
 
 Route::get('/home', 'HomeController@index')->name('home');
