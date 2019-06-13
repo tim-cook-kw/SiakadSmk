@@ -18,6 +18,6 @@ class Berita extends Model
 
     public function tag()
     {
-        return $this->belongsTo('App\Tags', 'id_tags');
+        return $this->belongsTo('App\Tag', 'id_tags');
     }
 }

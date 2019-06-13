@@ -12,20 +12,25 @@
       <table class="table table-bordered">
     <thead>
       <tr>
-        <th>File</th>
-        <th>Judul</th>
-        <th>Isi</th>
-        <th>Tanggal Terbit</th>
-        <th colspan="2" class="text-center">Aksi</th>
-      </tr>
+        <th class="col-2">File</th>
+        <th class="col-2">Judul</th>
+        <th class="col-2">Isi</th>
+        <th class="col-2">Tanggal Terbit</th>
+        <th class="col-2">Tag</th>
+        <th class="col-2" colspan="2" class="text-center">Aksi</th>
+      </tr> 
     </thead>
     <tbody>
     @foreach($news as $berita)
       <tr>
-        <td>{{$berita->nama_berita}}</td>
-        <td>{{$berita->jurusan->nama_jurusan}}</td>
+        <td class="text-center"><img src="{{ URL::to('/') }}/images/{{ $berita->file }}" class="img-thumbnail" width="75"></td>
+        <td>{{$berita->judul}}</td>
+        <td>{{$berita->isi}}</td>
+        <td>{{$berita->tanggal_terbit}}</td>
+        <td>{{$berita->tag->nama}}</td>
           <td class="text-center">
-              <a href="{{ route('edit.berita',$berita->id)}}" class="btn btn-primary btn-sm inline mb-1">Edit</a>
+              {{-- <a href="#" class="btn btn-primary btn-sm inline mb-1">Edit</a> --}}
+              {{-- {{ route('edit.berita',$berita->id)}} --}}
               <form action="{{ route('delete.berita', $berita->id)}}" method="post">
                   @csrf
                   @method('DELETE')

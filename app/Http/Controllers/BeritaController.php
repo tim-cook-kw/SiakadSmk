@@ -36,16 +36,24 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_mapel'=>'required',
-            'id_jurusan'=>'required'
+            'id_tags'=>'required',
+            'judul'=>'required',
+            'isi'=>'required',
+            'file'=>'required',
+            'tanggal_terbit'=>'required'
         ]);
 
-        $mapel = new Mapel([
-            'nama_mapel' => $request->get('nama_mapel'),
-            'id_jurusan' => $request->get('id_jurusan')
+        $filename = $this->getFileName($request->file);
+        $request->file->move(base_path('public/images'), $filename);        
+        $news = new Berita([
+            'file' => $filename,
+            'judul' => $request->get('judul'),
+            'isi' => $request->get('isi'),       
+            'id_tags' => $request->get('id_tags'),
+            'tanggal_terbit' => $request->get('tanggal_terbit')
         ]);
-        $mapel->save();
-        return redirect('/admin/mapel')->with('success', 'Jurusan saved!');
+        $news->save();
+        return redirect('/admin/berita')->with('success', 'Berita saved!');
     }
 
     /**
@@ -67,9 +75,9 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        $mapel = Mapel::find($id);
-        $jurusans = Jurusan::all();
-        return view('admin.mapel.editmapel', compact('mapel', 'jurusans'));
+        $news = Berita::find($id);
+        $tags = Tag::all();
+        return view('admin.berita.editberita', compact('news', 'tags'));
     }
 
     /**
@@ -82,19 +90,29 @@ class BeritaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_mapel'=>'required',
-            'id_jurusan'=>'required'
+            'id_tags'=>'required',
+            'judul'=>'required',
+            'isi'=>'required',
+            'file'=>'required',
+            'tanggal_terbit'=>'required'
         ]);
 
-
-        $mapel = Mapel::find($id);
-        $mapel->nama_mapel =  $request->get('nama_mapel');
-        $mapel->id_jurusan = $request->get('id_jurusan');
-        $mapel->save();
-
-        return redirect('/admin/mapel')->with('success', 'Jurusan updated!');
+        $filename = $this->getFileName($request->file);
+        $request->file->move(base_path('public/images'), $filename);        
+        $news = new Berita([
+            'file' => $filename,
+            'judul' => $request->get('judul'),
+            'isi' => $request->get('isi'),       
+            'id_tags' => $request->get('id_tags'),
+            'tanggal_terbit' => $request->get('tanggal_terbit')
+        ]);
+        $news->save();
+        return redirect('/admin/berita')->with('success', 'Berita updated!');
+    }   
+    protected function getFileName($file)
+    {
+        return str_random(32) . '.' . $file->extension();
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -103,9 +121,9 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        $mapel = Mapel::find($id);
-        $mapel->delete();
+        $news = Berita::find($id);
+        $news->delete();
 
-        return redirect('/admin/mapel')->with('success', 'Mapel deleted!');
+        return redirect('/admin/berita')->with('success', 'Berita deleted!');
     }
 }

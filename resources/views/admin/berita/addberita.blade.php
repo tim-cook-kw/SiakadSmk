@@ -1,9 +1,9 @@
 @extends('page/app_admin');
 @section('content')
-<form action="{{Route('insert.mapel')}}" method="post">
-@csrf
+<form enctype="multipart/form-data" action="{{Route('insert.berita')}}" method="post">
+@csrf   
   <div class="form-group">
-    <label for="file">File</label>
+    <label for="file">image</label>
     <input type="file" name="file" class="form-control" id="file">
   </div>
   <div class="form-group">
@@ -21,6 +21,10 @@
           <option value="{{$tag->id}}"> {{ $tag->nama }}</option>
               @endforeach
       </select>
+  </div>
+  <div class="form-group">
+    <label for="tanggal_terbit">image</label>
+    <input type="date" name="tanggal_terbit" class="form-control" id="tanggal_terbit">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
