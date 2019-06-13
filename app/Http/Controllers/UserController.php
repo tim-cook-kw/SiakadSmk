@@ -9,12 +9,13 @@ use App\Siswa;
 use App\Jurusan;
 use App\Kelas;
 use Image;
-
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
     public function index(){
         $siswa = Siswa::all();
+
         $user = DB::table('users')->where('status','3')->get();
         return view('admin.user.siswa', compact('user', 'siswa'));
     }
@@ -49,7 +50,9 @@ class UserController extends Controller
     }
     public function deleteSiswa($id){
         $siswa = User::find($id);
+        $detail = Siswa::where('id_user', $id);
         $siswa->delete();
+        $detail->delete();
         return redirect()->route('tampil.siswa');
     }
     public function indexGuru(){
@@ -137,14 +140,17 @@ class UserController extends Controller
             'no_telepon'=> $request->get('telp'),
             'id_user'=> $request->get('id_user'),
         );
-        Siswa::whereId($id)->update($siswa);
+        Siswa::where('id')->update($siswa);
 
 
-        return redirect()->route('tampil.siswa');
+
+        return back();
     }
+
     public function detailSiwa($id){
-        $siswa = Siswa::where('id',$id)->first();
-        return view('admin.user.detailsiswa', compact('siswa'));
+        $siswa = Siswa::where('id_user', $id)->get();
+        $users = User::where('id', $id)->first();
+        return view('admin.user.detailsiswa', compact('siswa', 'users'));
     }
 
 }

@@ -12,7 +12,7 @@
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
-    
+
 <style>
 
 </style>
@@ -77,9 +77,11 @@
     <div id="right-panel" class="right-panel">
         @include('admin.layout_admin.header')
         @yield('content')
-        @include('admin.layout_admin.footer')
     </div>
-    
+
+        
+
+
 
 
 <script src="{{ asset('assets/vendor/datatables/datatables.min.js') }}"></script>
