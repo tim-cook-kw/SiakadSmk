@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,19 +20,23 @@ Route::get('/', function () {
 Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/siswa', 'UserController@index')->name('tampil.siswa');
+    Route::get('/siswa/edit/{id}', 'UserController@indexEditSiswa');
+    Route::post( '/siswa/edit/{id}', 'UserController@editSiswa')->name('edit.user');
+    Route::delete('/siswa/delete/{id}', 'UserController@deleteSiswa')->name('delete.siswa');
     Route::get('/addsiswa', 'UserController@tampilSiswa')->name('tambah.user');
     Route::post('/addsiswa', 'UserController@tambahSiswa')->name('insert.user');
     Route::get('/guru', 'UserController@indexGuru')->name('tampil.guru');
     Route::get('/addguru', 'UserController@tambahGuru')->name('tambah.guru');
     Route::post('/addguru', 'UserController@addGuru')->name('insert.guru');
     Route::get('/siswa/{id}', 'UserController@tambahDetailSiswa');
+    Route::get('/detailsiswa/{id}', 'UserController@detailSiwa');
     Route::post('/siswa', 'UserController@insertDetailSiswa')->name('insert.siswa');
     Route::get('/infosekolah', 'InfoSekolahController@index')->name('infosekolah.index');
     Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
     Route::get('/infosekolah/{id}', 'InfoSekolahController@editInfoSekolah')->name('edit.sekolah');
     Route::post('/infosekolah/{id}', 'InfoSekolahController@updateInfoSekolah')->name('update.sekolah');
-    Route::get('/siswa/edit/{id}', 'UserController@indexEditDetailSiswa');
-    Route::put('/siswa/edit/{id}', 'UserController@editDetailSiswa')->name('edit.siswa');
+    // Route::get('/siswa/edit/{id}', 'UserController@indexEditDetailSiswa');
+    // Route::put('/siswa/edit/{id}', 'UserController@editDetailSiswa')->name('edit.siswa');
 
      /**============================= Routing Jurusan =============================**/
      Route::get('/jurusan', 'JurusanController@index')->name('tampil.jurusan');
@@ -41,7 +46,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::get('/editjurusan/{id}', 'JurusanController@edit')->name('edit.jurusan');
      Route::post('/editjurusan/{id}', 'JurusanController@update')->name('update.jurusan');
      /**============================= END Routing Jurusan =============================**/
- 
+
      /**============================= Routing Mapel =============================**/
      Route::get('/mapel', 'MapelController@index')->name('tampil.mapel');
      Route::get('/addmapel', 'MapelController@create')->name('tambah.mapel');
@@ -61,10 +66,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     });
     Route::Auth(['register'=>false]);
 
-   
 
 
-  
+
+
 
 
 

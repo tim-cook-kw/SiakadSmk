@@ -32,6 +32,26 @@ class UserController extends Controller
         ]);
         return redirect('admin/siswa');
     }
+    public function indexeditsiswa($id){
+        $siswa = User::where('id', $id)->first();
+        return view('admin.user.editsiswa', compact('siswa'));
+    }
+    public function editSiswa(Request $request, $id){
+        $siswa = array(
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'nip' => $request->get('nip'),
+            'status' => $request->get('status')
+        );
+        User::whereId($id)->update($siswa);
+        return redirect()->route('tampil.siswa');
+    }
+    public function deleteSiswa($id){
+        $siswa = User::find($id);
+        $siswa->delete();
+        return redirect()->route('tampil.siswa');
+    }
     public function indexGuru(){
         $user = DB::table('users')->where('status','2')->get();
         return view('admin.user.guru', compact('user'));
@@ -118,9 +138,13 @@ class UserController extends Controller
             'id_user'=> $request->get('id_user'),
         );
         Siswa::whereId($id)->update($siswa);
-        
-       
+
+
         return redirect()->route('tampil.siswa');
     }
-    
+    public function detailSiwa($id){
+        $siswa = Siswa::where('id',$id)->first();
+        return view('admin.user.detailsiswa', compact('siswa'));
+    }
+
 }
