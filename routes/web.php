@@ -61,7 +61,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     });
     Route::Auth(['register'=>false]);
 
+  
    
+   Route::get('/nilai',function(){
+    return view('guru.nilai');
+});
 
 
   

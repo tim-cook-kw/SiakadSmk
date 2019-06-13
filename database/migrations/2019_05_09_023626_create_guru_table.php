@@ -30,7 +30,7 @@ class CreateGuruTable extends Migration
             $table->foreign('id_kelas')->references('id')->on('kelas');
             $table->foreign('id_jurusan')->references('id')->on('jurusan');
             $table->foreign('id_mapel')->references('id')->on('mata_pelajaran');
-            $table->foreign('id_user')->references('id')->on('user');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
