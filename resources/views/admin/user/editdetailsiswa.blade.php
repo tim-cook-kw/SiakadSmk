@@ -4,11 +4,8 @@
 <h3 class="panel-title">
   Edit Detail Siswa
 </h3>
-
 <form action="{{Route('edit.siswa', $siswa->id)}}" method="post" enctype="multipart/form-data">
 @csrf
-
-
 <div class="p-image">
 <input type="hidden" name="name_image" value="{{$siswa->foto}}">
 <img class="profile-pic" style="max-width:200px;max-height:200px;"  src="{{url('siswa', $siswa->foto)}}">
