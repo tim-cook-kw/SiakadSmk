@@ -22,12 +22,15 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::get('/siswa', 'UserController@index')->name('tampil.siswa');
     Route::get('/siswa/edit/{id}', 'UserController@indexEditSiswa');
     Route::post( '/siswa/edit/{id}', 'UserController@editSiswa')->name('edit.user');
+    Route::get('/guru/edit/{id}', 'UserController@indexEditGuru');
+    Route::post('/guru/edit/{id}','UserController@editGuru')->name('edit.guru');
     Route::get('/siswa/delete/{id}', 'UserController@deleteSiswa')->name('delete.siswa');
     Route::get('/addsiswa', 'UserController@tampilSiswa')->name('tambah.user');
     Route::post('/addsiswa', 'UserController@tambahSiswa')->name('insert.user');
     Route::get('/guru', 'UserController@indexGuru')->name('tampil.guru');
     Route::get('/addguru', 'UserController@tambahGuru')->name('tambah.guru');
     Route::post('/addguru', 'UserController@addGuru')->name('insert.guru');
+    Route::get('/guru/delete/{id}', 'UserController@deleteGuru');
     Route::get('/siswa/{id}', 'UserController@tambahDetailSiswa');
     Route::get('/detailsiswa/{id_user}', 'UserController@detailSiwa')->name('index.detail');
     Route::get('/detailsiswa/edit/{id}', 'UserController@indexEditDetailSiswa');

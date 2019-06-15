@@ -8,7 +8,9 @@ use App\User;
 use App\Siswa;
 use App\Jurusan;
 use App\Kelas;
+use App\Guru;
 use Image;
+use File;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -38,10 +40,11 @@ class UserController extends Controller
         return view('admin.user.editsiswa', compact('siswa'));
     }
     public function editSiswa(Request $request, $id){
+        $pwd = Hash::make($request->get('password'));
         $siswa = array(
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => $request->get('password'),
+            'password' => $pwd,
             'nip' => $request->get('nip'),
             'status' => $request->get('status')
         );
@@ -50,7 +53,8 @@ class UserController extends Controller
     }
     public function deleteSiswa($id){
         $siswa = User::find($id);
-        $detail = Siswa::where('id_user', $id);
+        $detail = Siswa::where('id_user', $id)->first();
+        File::delete('public/siswa'.$detail->foto);
         $siswa->delete();
         $detail->delete();
         return redirect()->route('tampil.siswa');
@@ -71,6 +75,29 @@ class UserController extends Controller
             $request->input('status'),
         ]);
         return redirect('admin/guru');
+    }
+    public function indexEditGuru($id){
+        $siswa = User::where('id', $id)->first();
+        return view('admin.user.editguru', compact('siswa'));
+    }
+    public function editGuru(Request $request, $id){
+        $pwd = Hash::make($request->get('password'));
+        $siswa = array(
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $pwd,
+            'nip' => $request->get('nip'),
+            'status' => $request->get('status')
+        );
+        User::whereId($id)->update($siswa);
+        return redirect()->route('tampil.guru');
+    }
+    public function deleteGuru($id){
+        $siswa = User::find($id);
+        $detail = Guru::where('id_user', $id);
+        $siswa->delete();
+        $detail->delete();
+        return redirect()->route('tampil.guru');
     }
     public function tambahDetailSiswa($id){
         $siswa = User::where('id', $id)->first();
@@ -144,7 +171,7 @@ class UserController extends Controller
 
 
 
-        return back();
+        return redirect()->route('tampil.siswa');
     }
 
     public function detailSiwa($id){
