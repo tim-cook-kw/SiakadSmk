@@ -29,7 +29,7 @@
   </div>
   <div class="form-group">
     <label for="email">Nomor Induk Siswa Nasional</label>
-    <input type="number" name="nisn" class="form-control" id="nip">
+    <input type="number" name="nisn" class="form-control" id="nip" required>
   </div>
   <div class="form-group">
             <label for="id_jurusan">Jenis Kelamin</label>
@@ -48,15 +48,15 @@
   </div>
   <div class="form-group">
     <label for="email">Nomor Telepon</label>
-    <input type="number" name="telp" class="form-control" id="nip">
+    <input type="number" name="telp" class="form-control" id="nip" required>
   </div>
   <div class="form-group">
     <label for="email">Nama Ayah</label>
-    <input type="text" name="ayah" class="form-control" id="nip">
+    <input type="text" name="ayah" class="form-control" id="nip" required>
   </div>
   <div class="form-group">
     <label for="email">Nama ibu</label>
-    <input type="text" name="ibu" class="form-control" id="nip">
+    <input type="text" name="ibu" class="form-control" id="nip" required>
   </div>
   <div class="form-group">
             <label for="id_jurusan">Agama</label>

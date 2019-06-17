@@ -7,7 +7,7 @@ Guru
           <a href="{{ route('tambah.guru') }}" class="btn btn-success pull-right modal-show" style="margin-top: -8px;" title="Create User"><i class="icon-plus"></i>Tambah Guru</a>
       </h3>
 <div class="panel-heading">
-     
+
       </div>
       <table class="table table-bordered">
     <thead>
@@ -26,10 +26,7 @@ Guru
         <td>{{$users->nip}}</td>
         <td><a href="{{ url('/admin/detailsiswa/' . $users->id) }}" class="lihat" title="lihat detail"><i class="fa fa-eye"
         style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
-
-
-
-                        <a href="{{ url('/admin/siswa/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
+                        <a href="{{ url('/admin/guru/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
                                 style="color:aqua;text-shadow:1px 1px 4px black; margin:2px;"></i></a>
                         <a href="{{ url('/admin/guru/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
                                 style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>

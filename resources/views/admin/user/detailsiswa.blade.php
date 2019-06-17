@@ -7,6 +7,7 @@
         style="max-width:200px;max-height:200px;">
     <a href="{{ url('/admin/detailsiswa/edit/'.$item->id) }}" class="btn btn-success pull-right modal-show">Edit Detail Siswa</a>
 </div>
+<div class="jumbotron text-center">
 <table>
     <tr>
         <th> Nama </th>
@@ -16,14 +17,62 @@
     <tr>
         <th> NIS </th>
         <td> : </td>
-        <td> {{ $item->nis }} </td>
+        <td> {{ $item->NIS }} </td>
+    </tr>
+    <tr>
+        <th> NISN </th>
+        <td> : </td>
+        <td> {{ $item->NISN }} </td>
+    </tr>
+    <tr>
+        <th> Jurusan </th>
+        <td> : </td>
+        <td> {{ $jurusan->nama_jurusan }} </td>
+    </tr>
+    <tr>
+        <th> Kelas </th>
+        <td> : </td>
+        <td> {{ $kelas->level }}{{ $kelas->nama_kelas}} </td>
     </tr>
     <tr>
         <th> Jenis Kelamin </th>
         <td> : </td>
         <td> {{ $item->jenis_kelamin }} </td>
     </tr>
+    <tr>
+        <th> Agama </th>
+        <td> : </td>
+        <td> {{ $item->agama }} </td>
+    </tr>
+    <tr>
+        <th> Tempat Tanggal Lahir </th>
+        <td> : </td>
+        <td> {{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }} </td>
+    </tr>
+
+    <tr>
+        <th> Ayah </th>
+        <td> : </td>
+        <td> {{ $item->ayah }} </td>
+    </tr>
+    <tr>
+        <th>Ibu </th>
+        <td> : </td>
+        <td> {{ $item->ibu }} </td>
+    </tr>
+    <tr>
+        <th> No. Telepon </th>
+        <td> : </td>
+        <td> {{ $item->no_telepon }} </td>
+    </tr>
+    <tr>
+        <th> Email </th>
+        <td> : </td>
+        <td> {{ $users->email }} </td>
+    </tr>
+
 </table>
+</div>
 @empty
 
     <h1>Detail Belum ditambahkan</h1>
@@ -56,7 +105,7 @@
     </div>
     <div col="col-sm-8">
     <p class="font-weight-normal" style="margin-left:-200px;">{{ $siswa->jenis_kelamin }}</p></div>
-    
+
     </div>
 
 </div> --}}
