@@ -20,4 +20,9 @@ class Guru extends Model
         'no_telepon',
         'id_user'
     ];
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+
+    }
 }

@@ -9,6 +9,7 @@ use App\Siswa;
 use App\Jurusan;
 use App\Kelas;
 use App\Guru;
+use App\Mapel;
 use Image;
 use File;
 use Illuminate\Support\Facades\Redirect;
@@ -16,9 +17,8 @@ use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
     public function index(){
+        $user = DB::table('users')->where('status', '3')->get();
         $siswa = Siswa::all();
-
-        $user = DB::table('users')->where('status','3')->get();
         return view('admin.user.siswa', compact('user', 'siswa'));
     }
     public function tampilSiswa(){
@@ -177,7 +177,36 @@ class UserController extends Controller
     public function detailSiwa($id){
         $siswa = Siswa::where('id_user', $id)->get();
         $users = User::where('id', $id)->first();
-        return view('admin.user.detailsiswa', compact('siswa', 'users'));
+        foreach($siswa as $s){
+        $get_jrs = $s->id_jurusan;
+        $get_kelas = $s->id_kelas;
+        }
+        $jurusan = Jurusan::where('id', $get_jrs)->first();
+        $kelas = Kelas::where('id', $get_kelas)->first();
+        return view('admin.user.detailsiswa', compact('siswa', 'users', 'jurusan', 'kelas'));
+    }
+    public function indexAddDetailGuru($id){
+        $guru = User::where('id', $id)->first();
+        $kelas = Kelas::all();
+        $jurusan = Jurusan::all();
+        $mapel = Mapel::all();
+        return view('admin.user.adddetailguru', compact('guru', 'kelas', 'jurusan', 'mapel'));
+    }
+    public function addDetailGuru(Request $request){
+        $guru = new Guru([
+            'nama' => $request->get('name'),
+            'NIP' => $request->get('nis'),
+            'id_jurusan' => $request->get('id_jurusan'),
+            'id_kelas' => $request->get('id_kelas'),
+            'id_mapel' =>$request->get('id_mapel'),
+            'jenis_kelamin' => $request->get('jenis'),
+            'tempat_lahir' => $request->get('tempat'),
+            'tanggal_lahir' => $request->get('tanggallahir'),
+            'no_telepon' => $request->get('telp'),
+            'id_user' => $request->get('id_user'),
+        ]);
+        $guru->save();
+        return redirect()->route( 'tampil.guru');
     }
 
 }
