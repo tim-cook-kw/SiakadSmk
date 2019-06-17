@@ -54,7 +54,7 @@ class UserController extends Controller
     public function deleteSiswa($id){
         $siswa = User::find($id);
         $detail = Siswa::where('id_user', $id)->first();
-        File::delete('public/siswa'.$detail->foto);
+        File::delete('public/siswa/'.$detail->foto);
         $siswa->delete();
         $detail->delete();
         return redirect()->route('tampil.siswa');
