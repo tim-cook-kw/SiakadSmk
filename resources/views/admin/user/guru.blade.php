@@ -24,15 +24,34 @@ Guru
         <td>{{$users->name}}</td>
         <td>{{$users->email}}</td>
         <td>{{$users->nip}}</td>
-        <td><a href="{{ url('/admin/detailsiswa/' . $users->id) }}" class="lihat" title="lihat detail"><i class="fa fa-eye"
+        <td>
+        @forelse($guru as $item)
+        @if($users->id == $item->id_user)
+        <a href="{{ url('/admin/detailsiswa/' . $users->id) }}" class="lihat" title="lihat detail"><i class="fa fa-eye"
         style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
-                        <a href="{{ url('/admin/guru/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
+                        <a href="{{ url('/admin/guru/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
+                                style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+
+                        <a  href="/admin/guru/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+                        @else
+      <a href="{{ url('/admin/guru/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
                                 style="color:aqua;text-shadow:1px 1px 4px black; margin:2px;"></i></a>
                         <a href="{{ url('/admin/guru/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
                                 style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
 
                         <a  href="/admin/guru/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a></td>
+      @endif
+      @empty
+      <a href="{{ url('/admin/guru/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
+                                style="color:aqua;text-shadow:1px 1px 4px black; margin:2px;"></i></a>
+                        <a href="{{ url('/admin/guru/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
+                                style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+
+                        <a  href="/admin/guru/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a></td>
+      @endforelse
+                        </td>
       </tr>
+      
       @endforeach
     </tbody>
   </table>

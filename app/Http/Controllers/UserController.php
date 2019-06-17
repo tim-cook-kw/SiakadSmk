@@ -53,15 +53,15 @@ class UserController extends Controller
     }
     public function deleteSiswa($id){
         $siswa = User::find($id);
-        $detail = Siswa::where('id_user', $id)->first();
-        File::delete('public/siswa/'.$detail->foto);
+        $detail = Siswa::where('id_user', $id);
         $siswa->delete();
         $detail->delete();
         return redirect()->route('tampil.siswa');
     }
     public function indexGuru(){
         $user = DB::table('users')->where('status','2')->get();
-        return view('admin.user.guru', compact('user'));
+        $guru = Guru::all();
+        return view('admin.user.guru', compact('user', 'guru'));
     }
     public function tambahGuru(){
         return view('admin.user.addguru');
