@@ -8,13 +8,16 @@ use App\User;
 use App\Siswa;
 use App\Jurusan;
 use App\Kelas;
+use App\Guru;
 use Image;
-
+use File;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
     public function index(){
         $siswa = Siswa::all();
+
         $user = DB::table('users')->where('status','3')->get();
         return view('admin.user.siswa', compact('user', 'siswa'));
     }
@@ -32,6 +35,30 @@ class UserController extends Controller
         ]);
         return redirect('admin/siswa');
     }
+    public function indexeditsiswa($id){
+        $siswa = User::where('id', $id)->first();
+        return view('admin.user.editsiswa', compact('siswa'));
+    }
+    public function editSiswa(Request $request, $id){
+        $pwd = Hash::make($request->get('password'));
+        $siswa = array(
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $pwd,
+            'nip' => $request->get('nip'),
+            'status' => $request->get('status')
+        );
+        User::whereId($id)->update($siswa);
+        return redirect()->route('tampil.siswa');
+    }
+    public function deleteSiswa($id){
+        $siswa = User::find($id);
+        $detail = Siswa::where('id_user', $id)->first();
+        File::delete('public/siswa'.$detail->foto);
+        $siswa->delete();
+        $detail->delete();
+        return redirect()->route('tampil.siswa');
+    }
     public function indexGuru(){
         $user = DB::table('users')->where('status','2')->get();
         return view('admin.user.guru', compact('user'));
@@ -48,6 +75,29 @@ class UserController extends Controller
             $request->input('status'),
         ]);
         return redirect('admin/guru');
+    }
+    public function indexEditGuru($id){
+        $siswa = User::where('id', $id)->first();
+        return view('admin.user.editguru', compact('siswa'));
+    }
+    public function editGuru(Request $request, $id){
+        $pwd = Hash::make($request->get('password'));
+        $siswa = array(
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => $pwd,
+            'nip' => $request->get('nip'),
+            'status' => $request->get('status')
+        );
+        User::whereId($id)->update($siswa);
+        return redirect()->route('tampil.guru');
+    }
+    public function deleteGuru($id){
+        $siswa = User::find($id);
+        $detail = Guru::where('id_user', $id);
+        $siswa->delete();
+        $detail->delete();
+        return redirect()->route('tampil.guru');
     }
     public function tambahDetailSiswa($id){
         $siswa = User::where('id', $id)->first();
@@ -117,10 +167,17 @@ class UserController extends Controller
             'no_telepon'=> $request->get('telp'),
             'id_user'=> $request->get('id_user'),
         );
-        Siswa::whereId($id)->update($siswa);
-        
-       
+        Siswa::where('id')->update($siswa);
+
+
+
         return redirect()->route('tampil.siswa');
     }
-    
+
+    public function detailSiwa($id){
+        $siswa = Siswa::where('id_user', $id)->get();
+        $users = User::where('id', $id)->first();
+        return view('admin.user.detailsiswa', compact('siswa', 'users'));
+    }
+
 }

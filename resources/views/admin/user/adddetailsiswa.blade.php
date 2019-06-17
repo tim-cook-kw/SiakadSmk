@@ -10,7 +10,7 @@
 <img class="profile-pic" style="max-width:200px;max-height:200px;float:left;"  src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">
 <div class="p-image">
        <i class="fa fa-camera upload-button"></i>
-        <input class="file-upload" type="file" accept="image/*" name="image"/>
+        <input class="file-upload" type="file" accept="image/*" name="image" required/>
      </div>
      <input type="hidden" name="id_user" value="{{$siswa->id}}">
 <div class="form-group">
@@ -78,13 +78,13 @@
             </div>
             <div class="form-group">
             <label for="id_jurusan">Kelas</label>
-            
+
             <select name="id_kelas" id="id_kelas" class="form-control">
             @foreach($kelas as $kelass)
                     <option value="{{$kelass->id}}"> {{ $kelass->nama_kelas }}</option>
                     @endforeach
             </select>
-            
+
             </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>

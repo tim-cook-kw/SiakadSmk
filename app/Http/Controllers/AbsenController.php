@@ -15,7 +15,7 @@ class absenController extends Controller
     public function index()
     {
         $absen = absen::all();
-        return view('guru.absensi_siswa.absen', compact('Absens'));
+        return view('guru.absensi_siswa.absen', compact('absen'));
     }
 
     /**
