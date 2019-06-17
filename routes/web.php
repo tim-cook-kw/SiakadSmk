@@ -61,8 +61,19 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     });
     Route::Auth(['register'=>false]);
 
-   
-
+    Route::group(['prefix'=>'guru', 'middleware'=>['auth']], function(){
+      /**============================= Routing Absen =============================**/
+     Route::get('/absen', 'absenController@index')->name('tampil.absen');
+     Route::get('/addabsen', 'absenController@create')->name('tambah.absen');
+     Route::post('/addabsen', 'absenController@store')->name('insert.absen');
+     Route::delete('/deleteabsen/{id}', 'absenController@destroy')->name('delete.absen');
+     Route::get('/editabsen/{id}', 'absenController@edit')->name('edit.absen');
+     Route::post('/editabsen/{id}', 'absenController@update')->name('update.absen');
+     /**============================= END Routing Absen =============================**/  
+    });
+    Route::get('/guru', function () {
+        return view('guru.guru');
+    });
 
   
 
