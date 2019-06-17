@@ -30,10 +30,20 @@
                     <td>{{$users->email}}</td>
                     <td>{{$users->nip}}</td>
                     <td>
+                
 
-<a href="{{ url('/admin/detailsiswa/' . $users->id) }}" class="lihat" title="lihat detail"><i class="fa fa-eye"
+@forelse($siswa as $item)
+
+@if($users->id == $item->id_user)
+
+<a href="{{ url('/admin/detailsiswa/'.$users->id) }}"class="lihat"title="lihatdetail"><i class="fa fa-eye"
+style="color:black;text-shadow:1px1px4pxblack;margin:2px;"></i></a>
+<a href="{{ url('/admin/siswa/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
         style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
 
+<a href="/admin/siswa/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash"
+        style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+@else
 
 
                         <a href="{{ url('/admin/siswa/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
@@ -42,6 +52,16 @@
                                 style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
 
                         <a  href="/admin/siswa/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+@endif
+@empty
+<a href="{{ url('/admin/siswa/' . $users->id) }}" title="tambah detail"><i class="fa fa-plus"
+                                style="color:aqua;text-shadow:1px 1px 4px black; margin:2px;"></i></a>
+                        <a href="{{ url('/admin/siswa/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
+                                style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+
+                        <a  href="/admin/siswa/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
+@endforelse
+
 
                     </td>
                 </tr>

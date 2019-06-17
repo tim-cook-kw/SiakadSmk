@@ -36,6 +36,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::get('/detailsiswa/edit/{id}', 'UserController@indexEditDetailSiswa');
     Route::post('/detailsiswa/edit/{id}', 'UserController@editDetailSiswa')->name('edit.siswa');
     Route::post('/siswa', 'UserController@insertDetailSiswa')->name('insert.siswa');
+    Route::get('/guru/{id}', 'UserController@indexAddDetailGuru');
+    Route::post('/guru', 'UserController@addDetailGuru')->name('insert.detailguru');
     Route::get('/infosekolah', 'InfoSekolahController@index')->name('infosekolah.index');
     Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
     Route::get('/infosekolah/{id}', 'InfoSekolahController@editInfoSekolah')->name('edit.sekolah');
