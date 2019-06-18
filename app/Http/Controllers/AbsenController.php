@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Absen;
+use App\Kelas;
+use App\Siswa;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
@@ -14,10 +16,13 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        $absen = absen::all();
-        return view('guru.absensi_siswa.absen', compact('absen'));
+        $kelas = Kelas::all();
+        return view('guru.absensi_siswa.absen', compact('kelas'));
     }
-
+    public function tampilKelas($id){
+        $siswa = Siswa::where('id_kelas', $id)->get();
+        return view( 'guru.absensi_siswa.addabsen', compact('siswa'));
+    }
     /**
      * Show the form for creating a new resource.
      *

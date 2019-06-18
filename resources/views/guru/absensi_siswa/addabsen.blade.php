@@ -1,21 +1,28 @@
 @extends('page/app_admin');
 @section('content')
-<form action="{{Route('update.jurusan', $jurusan->id)}}" method="post">
+<form action="" method="post">
 @csrf
-
-<div class="form-group">
-    <label for="nama_jurusan">Nama Siswa</label>
-    <input type="text" name="nama_jurusan" class="form-control" id="nama_jurusan" value="{{$jurusan->nama_jurusan}}">
-  </div>
-  <div class="form-group">
-    <label for="visi">Waktu</label>
-    <input type="text" name="visi" class="form-control" id="visi" value="{{$jurusan->visi}}">
-  </div>
-  <div class="form-group">
-    <label for="misi">Keterangan</label>
-    <input type="text" name="misi" class="form-control" id="misi" value="{{$jurusan->misi}}">
-  </div>
-
+<?php $no = 0;?>
+@foreach ($siswa as $item)
+<?php $no++ ;?>
+<table>
+    <thead>
+        <td>No</td>
+        <td>Nama</td>
+        <td>Keterangan</td>
+    </thead>
+    <tbody>
+        <td>{{ $no }}</td>
+        <td>{{ $item->nama }}</td>
+        <td><select name="keterangan" id="">
+            <option value="masuk">Masuk</option>
+            <option value="izin">Izin</option>
+            <option value="sakit">Sakit</option>
+            <option value="alfa">Alfa</option>
+            </select></td>
+    </tbody>
+</table>
+@endforeach
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 @endsection

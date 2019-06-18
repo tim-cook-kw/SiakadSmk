@@ -31,7 +31,7 @@ Guru
         <td>
         @forelse($guru as $item)
         @if($users->id == $item->id_user)
-        <a href="{{ url('/admin/detailsiswa/' . $users->id) }}" class="lihat" title="lihat detail"><i class="fa fa-eye"
+        <a href="{{ url('/admin/detailguru/' . $users->id) }}" class="lihat" title="lihat detail"><i class="fa fa-eye"
         style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
                         <a href="{{ url('/admin/guru/edit/' . $users->id) }}" title="edit"><i class="fa fa-edit"
                                 style="color:black;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>

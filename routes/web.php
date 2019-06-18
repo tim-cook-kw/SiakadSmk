@@ -38,6 +38,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::post('/siswa', 'UserController@insertDetailSiswa')->name('insert.siswa');
     Route::get('/guru/{id}', 'UserController@indexAddDetailGuru');
     Route::post('/guru', 'UserController@addDetailGuru')->name('insert.detailguru');
+    Route::get('/detailguru/{id}', 'UserController@detailGuru');
+    Route::get('detailguru/edit/{id}', 'UserController@indexEditDetailGuru');
+    Route::post('detailguru/edit/{id}', 'UserController@editDetailGuru')->name('update.guru');
     Route::get('/infosekolah', 'InfoSekolahController@index')->name('infosekolah.index');
     Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
     Route::get('/infosekolah/{id}', 'InfoSekolahController@editInfoSekolah')->name('edit.sekolah');
@@ -76,7 +79,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
       /**============================= Routing Absen =============================**/
       Route::get('/', 'GuruController@index');
      Route::get('/absen', 'AbsenController@index')->name('tampil.absen');
-     Route::get('/addabsen', 'AbsenController@create')->name('tambah.absen');
+     Route::get('/addabsen/{id}', 'AbsenController@tampilKelas');
      Route::post('/addabsen', 'AbsenController@store')->name('insert.absen');
      Route::delete('/deleteabsen/{id}', 'AbsenController@destroy')->name('delete.absen');
      Route::get('/editabsen/{id}', 'AbsenController@edit')->name('edit.absen');

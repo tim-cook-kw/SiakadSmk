@@ -62,7 +62,7 @@
       <section class="content">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni quibusdam magnam harum reiciendis et. Iste, harum. Velit, quia illum eos voluptatem autem esse aliquam eveniet mollitia, architecto, labore consequuntur magni.</p>
+            @yield('content1')
         </div>
       </section>
     </div>

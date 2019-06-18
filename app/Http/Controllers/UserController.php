@@ -208,5 +208,43 @@ class UserController extends Controller
         $guru->save();
         return redirect()->route( 'tampil.guru');
     }
+    public function detailGuru($id){
+        $guru = Guru::where('id_user', $id)->get();
+        $user = User::where('id', $id)->first();
+        foreach($guru as $item){
+            $get_kelas = $item->id_kelas;
+            $get_mapel = $item->id_mapel;
+            $get_jurusan = $item->id_jurusan;
+        }
+        $kelas = Kelas::where('id', $get_kelas)->first();
+        $mapel = Mapel::where('id', $get_mapel)->first();
+        $jurusan = Jurusan::where('id', $get_jurusan)->first();
+
+        return view('admin.user.detailguru', compact('guru', 'user','kelas', 'mapel', 'jurusan'));
+    }
+    public function indexEditDetailGuru($id){
+        $guru = Guru::where('id', $id)->first();
+        $kelas = Kelas::all();
+        $jurusan = Jurusan::all();
+        $mapel = Mapel::all();
+        return view('admin.user.editdetailguru', compact('guru', 'kelas', 'jurusan', 'mapel'));
+
+    }
+    public function editDetailGuru(Request $request){
+        $guru = array(
+            'nama' => $request->get('name'),
+            'NIP' => $request->get('nis'),
+            'id_jurusan' => $request->get('id_jurusan'),
+            'id_kelas' => $request->get('id_kelas'),
+            'id_mapel' => $request->get('id_mapel'),
+            'jenis_kelamin' => $request->get('jenis'),
+            'tempat_lahir' => $request->get('tempat'),
+            'tanggal_lahir' => $request->get('tanggallahir'),
+            'no_telepon' => $request->get('telp'),
+            'id_user' => $request->get('id_user'),
+        );
+        Guru::where('id')->update($guru);
+        return redirect()->route('tampil.guru');
+    }
 
 }
