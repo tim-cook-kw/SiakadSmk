@@ -1,5 +1,6 @@
-@extends('guru/guru');
-@section('content1')
+@extends('page/guru')
+@section('content_guru')
+<div class="container">
 <form action="{{Route('insert.absen')}}" method="post">
 @csrf
 <div class="form-group">
@@ -17,5 +18,6 @@
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+</div>
 @endforeach
 @endsection

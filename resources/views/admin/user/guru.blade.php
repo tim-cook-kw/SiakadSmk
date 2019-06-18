@@ -12,6 +12,7 @@ Guru
       <table class="table table-bordered">
     <thead>
       <tr>
+        <th>No</th>
         <th>Nama</th>
         <th>Email</th>
         <th>NIP</th>
@@ -19,8 +20,11 @@ Guru
       </tr>
     </thead>
     <tbody>
+    <?php $no = 0;?>
     @foreach($user as $users)
+    <?php $no++ ;?>
       <tr>
+        <td>{{ $no }}</td>
         <td>{{$users->name}}</td>
         <td>{{$users->email}}</td>
         <td>{{$users->nip}}</td>
@@ -51,7 +55,7 @@ Guru
       @endforelse
                         </td>
       </tr>
-      
+
       @endforeach
     </tbody>
   </table>
