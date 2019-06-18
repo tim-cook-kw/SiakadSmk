@@ -1,10 +1,11 @@
+<!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{url('assets/guru/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
@@ -25,7 +26,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <!-- <li class="active treeview">
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -187,18 +188,12 @@
             </li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
-        </li> -->
-        <li class="menu-title"><i class="fa fa-icon-user"></i><a href="{{Route('tampil.absen')}}">Absensi Siwsa</a></li>
-        <li class="menu-title"><i class="fa fa-icon-user"></i><a href="#">Nilai Siswa</a></li>
-        <li class="menu-title"><i class="fa fa-icon-user"></i><a href="#">Tugas Siswa</a></li>
-        <!-- <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Absensi Siswa</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>TUgas</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Nilai</span></a></li> -->
-        <!-- <li class="header">LABELS</li>
+        </li>
+        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
