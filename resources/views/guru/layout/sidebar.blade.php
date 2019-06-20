@@ -189,7 +189,7 @@
           </ul>
         </li> -->
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Nilai</span></a></li>
+        <li><a href="{{url('guru/nilai')}}"><i class="fa fa-book"></i> <span>Nilai</span></a></li>
         <li><a href="#"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
         <li><a href="#"><i class="fa fa-book"></i> <span>Absensi Siswa</span></a></li>
         <!-- <li class="header">LABELS</li>

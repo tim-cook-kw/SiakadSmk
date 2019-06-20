@@ -42,11 +42,10 @@
 <body class="hold-transition skin-blue sidebar-mini">
 
 <!-- ./wrapper -->
-@include('guru.layout.sidebar')
-
+    @include('guru.layout.sidebar')
     <div id="right-panel" class="right-panel">
         @include('guru.layout.header')
-        @yield('content')
+          @yield('content')
         @include('guru.layout.footer')
     </div>
 <!-- jQuery 3 -->

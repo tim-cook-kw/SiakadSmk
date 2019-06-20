@@ -61,15 +61,18 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     });
     Route::Auth(['register'=>false]);
 
-  
-   
-   Route::get('/nilai',function(){
-    return view('guru.nilai');
+   Route::group(['prefix'=>'guru', 'middleware'=>['auth']], function(){
+       
 });
 
-
   
+Route::get('/guru',function(){
+    return view('guru.guru');
+});
 
+Route::get('/nilai',function(){
+    return view('guru.nilai');
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');

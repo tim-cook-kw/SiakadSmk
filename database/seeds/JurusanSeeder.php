@@ -19,8 +19,8 @@ class JurusanSeeder extends Seeder
             // insert data ke table pegawai menggunakan Faker
             DB::table('jurusan')->insert([
                 'nama_jurusan' => $faker->city,
-                'visi' => $faker-> company,
-                'misi' => $faker-> macAddress
+                'visi' => $faker->company,
+                'misi' => $faker->macAddress
             ]);
 
         }
