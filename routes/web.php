@@ -19,19 +19,31 @@ Route::get('/', function () {
 Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/siswa', 'UserController@index')->name('tampil.siswa');
+    Route::get('/siswa/edit/{id}', 'UserController@indexEditSiswa');
+    Route::post( '/siswa/edit/{id}', 'UserController@editSiswa')->name('edit.user');
+    Route::get('/guru/edit/{id}', 'UserController@indexEditGuru');
+    Route::post('/guru/edit/{id}','UserController@editGuru')->name('edit.guru');
+    Route::get('/siswa/delete/{id}', 'UserController@deleteSiswa')->name('delete.siswa');
     Route::get('/addsiswa', 'UserController@tampilSiswa')->name('tambah.user');
     Route::post('/addsiswa', 'UserController@tambahSiswa')->name('insert.user');
     Route::get('/guru', 'UserController@indexGuru')->name('tampil.guru');
     Route::get('/addguru', 'UserController@tambahGuru')->name('tambah.guru');
     Route::post('/addguru', 'UserController@addGuru')->name('insert.guru');
+    Route::get('/guru/delete/{id}', 'UserController@deleteGuru');
     Route::get('/siswa/{id}', 'UserController@tambahDetailSiswa');
+    Route::get('/detailsiswa/{id_user}', 'UserController@detailSiwa')->name('index.detail');
+    Route::get('/detailsiswa/edit/{id}', 'UserController@indexEditDetailSiswa');
+    Route::post('/detailsiswa/edit/{id}', 'UserController@editDetailSiswa')->name('edit.siswa');
     Route::post('/siswa', 'UserController@insertDetailSiswa')->name('insert.siswa');
+    Route::get('/guru/{id}', 'UserController@indexAddDetailGuru');
+    Route::post('/guru', 'UserController@addDetailGuru')->name('insert.detailguru');
+    Route::get('/detailguru/{id}', 'UserController@detailGuru');
+    Route::get('detailguru/edit/{id}', 'UserController@indexEditDetailGuru');
+    Route::post('detailguru/edit/{id}', 'UserController@editDetailGuru')->name('update.guru');
     Route::get('/infosekolah', 'InfoSekolahController@index')->name('infosekolah.index');
     Route::post('/infosekolah', 'InfoSekolahController@addInfoSekolah')->name('insert.infosekolah');
     Route::get('/infosekolah/{id}', 'InfoSekolahController@editInfoSekolah')->name('edit.sekolah');
     Route::post('/infosekolah/{id}', 'InfoSekolahController@updateInfoSekolah')->name('update.sekolah');
-    Route::get('/siswa/edit/{id}', 'UserController@indexEditDetailSiswa');
-    Route::put('/siswa/edit/{id}', 'UserController@editDetailSiswa')->name('edit.siswa');
 
      /**============================= Routing Jurusan =============================**/
      Route::get('/jurusan', 'JurusanController@index')->name('tampil.jurusan');
@@ -61,14 +73,29 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
     });
     Route::Auth(['register'=>false]);
 
-   Route::group(['prefix'=>'guru', 'middleware'=>['auth']], function(){
-       
-});
+    Route::group(['prefix'=>'guru', 'middleware'=>['auth']], function(){
+      /**============================= Routing Absen =============================**/
+      Route::get('/', 'GuruController@index');
+     Route::get('/absen', 'AbsenController@index')->name('tampil.absen');
+     Route::get('/addabsen/{id}', 'AbsenController@tampilKelas');
+     Route::post('/addabsen', 'AbsenController@store')->name('insert.absen');
+     Route::delete('/deleteabsen/{id}', 'AbsenController@destroy')->name('delete.absen');
+     Route::get('/editabsen/{id}', 'AbsenController@edit')->name('edit.absen');
+     Route::post('/editabsen/{id}', 'AbsenController@update')->name('update.absen');
+     /**============================= END Routing Absen =============================**/
+
+     /**============================= Routing Tugas =============================**/
+     Route::get('/tugas', 'TugasController@index')->name('tampil.tugas');
+     Route::post('/addtugas/{id}', 'TugasController@addtugas');
+     Route::post('/addtugas', 'TugasController@store')->name('insert.tugas');
+     Route::delete('/deletea/{id}', 'TugasController@destroy')->name('delete.tugas');
+     Route::get('/editabsen/{id}', 'TugasController@edit')->name('edit.tugas');
+     Route::post('/editabsen/{id}', 'TugasController@update')->name('update.tugas');
+     /**============================= END Routing Absen =============================**/
+    });
 
   
-Route::get('/guru',function(){
-    return view('guru.guru');
-});
+
 
 Route::get('/nilai',function(){
     return view('guru.nilai');

@@ -24,9 +24,12 @@ class CreateGuruTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->integer('no_telepon');
-            $table->integer('id_user')->unsigned();
+            $table-> bigInteger('id_user')->unsigned();
             $table->timestamps();
 
+
+        });
+        Schema::table('guru', function($table){
             $table->foreign('id_kelas')->references('id')->on('kelas');
             $table->foreign('id_jurusan')->references('id')->on('jurusan');
             $table->foreign('id_mapel')->references('id')->on('mata_pelajaran');

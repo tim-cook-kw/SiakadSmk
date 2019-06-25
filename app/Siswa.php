@@ -22,9 +22,10 @@ class Siswa extends Model
         'ayah',
         'ibu',
         'no_telepon',
-        'id_user'
+        'id_user',
+        'id'
     ];
-    
+
     public function jurusan()
     {
         return $this->belongsTo('App\Jurusan', 'id_jurusan');
