@@ -22,7 +22,12 @@ class AbsenController extends Controller
     }
     public function tampilKelas($id){
         $siswa = Siswa::where('id_kelas', $id)->get();
-        return view( 'guru.absensi_siswa.addabsen', compact('siswa'));
+        foreach($siswa as $item){
+            $getid = $item->id;
+        }
+        $absen = Absen::where('id_siswa', $getid)->get();
+
+        return view( 'guru.absensi_siswa.addabsen', compact('siswa','absen'));
     }
     public function absenSiswa(Request $request){
         $absen = new Absen([

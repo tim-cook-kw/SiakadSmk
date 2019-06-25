@@ -9,7 +9,8 @@ class Absen extends Model
     protected $fillable = [
         'id_siswa',
         'waktu',
-        'keterangan'
+        'keterangan',
+        'id'
     ];
     protected $table = 'absensi_siswa';
 }
