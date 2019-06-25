@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class absen extends Model
+class Absen extends Model
 {
     protected $fillable = [
-        
+        'id_siswa',
+        'waktu',
+        'keterangan',
+        'id'
     ];
-    protected $table = "absensi_siswa";
+    protected $table = 'absensi_siswa';
 }

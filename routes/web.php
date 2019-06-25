@@ -75,13 +75,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
     Route::group(['prefix'=>'guru', 'middleware'=>['auth']], function(){
       /**============================= Routing Absen =============================**/
-      Route::get('/', 'GuruController@index');
+     Route::get('/', 'GuruController@index');
      Route::get('/absen', 'AbsenController@index')->name('tampil.absen');
      Route::get('/addabsen/{id}', 'AbsenController@tampilKelas');
      Route::post('/addabsen', 'AbsenController@store')->name('insert.absen');
      Route::delete('/deleteabsen/{id}', 'AbsenController@destroy')->name('delete.absen');
      Route::get('/editabsen/{id}', 'AbsenController@edit')->name('edit.absen');
      Route::post('/editabsen/{id}', 'AbsenController@update')->name('update.absen');
+     Route::get('/absen/siswa', 'AbsenController@absenSiswa')->name('absen.siswa');
      /**============================= END Routing Absen =============================**/
 
      /**============================= Routing Tugas =============================**/
