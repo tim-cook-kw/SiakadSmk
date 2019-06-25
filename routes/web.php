@@ -84,6 +84,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::delete('/deleteabsen/{id}', 'AbsenController@destroy')->name('delete.absen');
      Route::get('/editabsen/{id}', 'AbsenController@edit')->name('edit.absen');
      Route::post('/editabsen/{id}', 'AbsenController@update')->name('update.absen');
+     Route::get('/absen/siswa', 'AbsenController@absenSiswa')->name('absen.siswa');
      /**============================= END Routing Absen =============================**/
     });
 

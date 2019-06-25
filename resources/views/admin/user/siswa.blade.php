@@ -30,9 +30,9 @@
                     <td>{{$users->email}}</td>
                     <td>{{$users->nip}}</td>
                     <td>
-                
 
-@forelse($siswa as $item)
+
+@forelse ($siswa as $item)
 
 @if($users->id == $item->id_user)
 
@@ -61,13 +61,12 @@ style="color:black;text-shadow:1px1px4pxblack;margin:2px;"></i></a>
 
                         <a  href="/admin/siswa/delete/{{$users->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a>
 @endforelse
-
+@endforeach
 
                     </td>
                 </tr>
 
             </tbody>
-            @endforeach
         </table>
     </div>
 </div>

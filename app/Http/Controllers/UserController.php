@@ -18,7 +18,7 @@ class UserController extends Controller
 {
     public function index(){
         $user = DB::table('users')->where('status', '3')->get();
-        $siswa = Siswa::all();
+        $siswa = Siswa::get();
         return view('admin.user.siswa', compact('user', 'siswa'));
     }
     public function tampilSiswa(){

@@ -6,6 +6,7 @@ use App\Absen;
 use App\Kelas;
 use App\Siswa;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AbsenController extends Controller
 {
@@ -22,6 +23,16 @@ class AbsenController extends Controller
     public function tampilKelas($id){
         $siswa = Siswa::where('id_kelas', $id)->get();
         return view( 'guru.absensi_siswa.addabsen', compact('siswa'));
+    }
+    public function absenSiswa(Request $request){
+        $absen = new Absen([
+            'id_siswa' => $request->get('id_siswa'),
+            'keterangan' =>$request->get('keterangan'),
+            'waktu' => Carbon::now()
+        ]);
+        $absen->save();
+        return back();
+
     }
     /**
      * Show the form for creating a new resource.
