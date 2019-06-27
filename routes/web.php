@@ -89,15 +89,26 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::get('/tugas', 'TugasController@index')->name('tampil.tugas');
      Route::post('/addtugas/{id}', 'TugasController@addtugas');
      Route::post('/addtugas', 'TugasController@store')->name('insert.tugas');
-     Route::delete('/deletea/{id}', 'TugasController@destroy')->name('delete.tugas');
-     Route::get('/editabsen/{id}', 'TugasController@edit')->name('edit.tugas');
-     Route::post('/editabsen/{id}', 'TugasController@update')->name('update.tugas');
+     Route::delete('/deletetugas/{id}', 'TugasController@destroy')->name('delete.tugas');
+     Route::get('/edittugas/{id}', 'TugasController@edit')->name('edit.tugas');
+     Route::post('/edittugas/{id}', 'TugasController@update')->name('update.tugas');
      /**============================= END Routing Absen =============================**/
+
+      /**============================= Routing Nilai =============================**/
+      Route::get('/nilai', 'NilaiController@index')->name('tampil.nilai');
+      Route::post('/addnilai/{id}', 'NilaiController@addnilai');
+      Route::post('/addnilai', 'TugasController@store')->name('insert.tugas');
+      Route::delete('/deletetugas/{id}', 'TugasController@destroy')->name('delete.tugas');
+      Route::get('/edittugas/{id}', 'TugasController@edit')->name('edit.tugas');
+      Route::post('/edittugas/{id}', 'TugasController@update')->name('update.tugas');
+      /**============================= END Routing Nilai =============================**/
     });
 
   
 
-
+    Route::group(['prefix'=>'murid', 'middleware'=>['auth']], function(){
+        Route::get('/', 'SiswaController@index');
+    });
 Route::get('/nilai',function(){
     return view('guru.nilai');
 });

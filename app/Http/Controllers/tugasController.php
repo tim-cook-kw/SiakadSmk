@@ -18,7 +18,7 @@ class tugasController extends Controller
     public function index()
     {
         $id_guru = Auth::user()->id;
-        $guru = Guru::where('id_user', $id_guru)->first();
+        $guru  = Guru::where('id_user', $id_guru)->first();
         $get_id = $guru->id;
         $mapel = Mapel::all();
         $kelas = Kelas::all();

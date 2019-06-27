@@ -37,7 +37,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ Route('tampil.absen') }}">
+          <a href="{{ Route('tampil.nilai') }}">
             <span>Nilai</span>
           </a>
         </li>
