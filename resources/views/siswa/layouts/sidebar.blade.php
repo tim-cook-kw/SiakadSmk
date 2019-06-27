@@ -27,7 +27,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="#">
+          <a href="{{ url('murid/absen') }}">
             <span>Absensi</span>
           </a>
         </li>
