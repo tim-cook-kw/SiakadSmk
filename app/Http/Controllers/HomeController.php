@@ -24,12 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->status = 1){
+        if(Auth::user()->status == 1){
             return redirect('admin');
-        }else if(Auth::user()->status = 2){
-            return redirect('guru');
-        }else if(Auth::user()->status = 3){
-            return redirect('siswa');
+        }else if(Auth::user()->status == 2){
+            return redirect()->route('guru');
+        }else if(Auth::user()->status == 3){
+            return redirect('murid');
         }
     }
 }

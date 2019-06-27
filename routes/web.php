@@ -53,7 +53,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::get('/editjurusan/{id}', 'JurusanController@edit')->name('edit.jurusan');
      Route::post('/editjurusan/{id}', 'JurusanController@update')->name('update.jurusan');
      /**============================= END Routing Jurusan =============================**/
- 
+
      /**============================= Routing Mapel =============================**/
      Route::get('/mapel', 'MapelController@index')->name('tampil.mapel');
      Route::get('/addmapel', 'MapelController@create')->name('tambah.mapel');
@@ -75,7 +75,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
     Route::group(['prefix'=>'guru', 'middleware'=>['auth']], function(){
       /**============================= Routing Absen =============================**/
-     Route::get('/', 'GuruController@index');
+     Route::get('/', 'GuruController@index')->name('guru');
      Route::get('/absen', 'AbsenController@index')->name('tampil.absen');
      Route::get('/addabsen/{id}', 'AbsenController@tampilKelas');
      Route::post('/addabsen', 'AbsenController@store')->name('insert.absen');
@@ -95,7 +95,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      /**============================= END Routing Absen =============================**/
     });
 
-  
+
 
 
 Route::get('/nilai',function(){
