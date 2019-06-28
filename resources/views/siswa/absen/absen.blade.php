@@ -1,8 +1,6 @@
-@extends('page/app_admin')
-@section('content')
-
-
-    <div class="container">
+@extends('page.siswa')
+@section('content2')
+<div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -16,6 +14,5 @@
     {!! Charts::scripts() !!}
     {!! $chart->script() !!}
     <div class="clearfix"></div>
-
-<!-- /#right-panel -->
-    @endsection
+    
+@endsection

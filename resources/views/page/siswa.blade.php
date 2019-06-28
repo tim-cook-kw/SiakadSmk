@@ -62,7 +62,7 @@
       <section class="content">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            @yield('content1')
+            @yield('content2')
         </div>
       </section>
     </div>

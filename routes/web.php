@@ -62,6 +62,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::get('/editmapel/{id}', 'MapelController@edit')->name('edit.mapel');
      Route::post('/editmapel/{id}', 'MapelController@update')->name('update.mapel');
      /**============================= END Routing Mapel =============================**/
+
       /**============================= Routing Kelas =============================**/
       Route::get('/kelas', 'KelasController@index')->name('tampil.kelas');
       Route::get('/addkelas', 'KelasController@create')->name('tambah.kelas');
@@ -103,10 +104,13 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
     Route::group(['prefix'=>'murid', 'middleware'=>['auth']], function(){
         Route::get('/', 'SiswaController@index');
-    });
-Route::get('/nilai',function(){
-    return view('guru.nilai');
-});
 
+    /**============================= Murid Absen =============================**/
+     Route::get('absen','AbsenMuridController@absen');
+     /**============================= END Routing Absen =============================**/
+    });
+     
+
+  
 
 Route::get('/home', 'HomeController@index')->name('home');

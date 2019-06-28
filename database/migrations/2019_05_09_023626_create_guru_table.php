@@ -24,7 +24,7 @@ class CreateGuruTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->integer('no_telepon');
-            $table-> bigInteger('id_user')->unsigned();
+            $table->integer('id_user')->unsigned();
             $table->timestamps();
 
 
