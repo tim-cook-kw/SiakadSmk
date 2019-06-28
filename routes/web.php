@@ -90,6 +90,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
      Route::get('/tugas', 'TugasController@index')->name('tampil.tugas');
      Route::post('/addtugas/{id}', 'TugasController@addtugas');
      Route::post('/addtugas', 'TugasController@store')->name('insert.tugas');
+     Route::get('/tugas/delet/{id}', 'TugasController@destroy')->name('delete.tugas');
      /**============================= END Routing Absen =============================**/
 
       /**============================= Routing Nilai =============================**/

@@ -105,6 +105,9 @@ class tugasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+            $siswa = Tugas::find($id);
+            $siswa->delete();
+            return back();
     }
 }
