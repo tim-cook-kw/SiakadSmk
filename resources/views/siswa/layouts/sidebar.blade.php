@@ -32,7 +32,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{ url('murid/tugas') }}">
             <span>Tugas</span>
           </a>
         </li>

@@ -107,6 +107,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
 
     /**============================= Murid Absen =============================**/
      Route::get('absen','AbsenMuridController@absen');
+     Route::get('tugas','TugasMuridController@index')->name('tampil.tugas');
      /**============================= END Routing Absen =============================**/
     });
      
