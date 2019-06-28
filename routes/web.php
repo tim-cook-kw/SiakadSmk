@@ -98,11 +98,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth']], function(){
       Route::get('/nilai', 'NilaiController@index')->name('tampil.nilai');
       Route::get('view_siswa/{id}','NilaiController@view');
       Route::get('/nilai/addnilai/{id}', 'NilaiController@indexAddNilai');
-    
       Route::post('/addnilai', 'NilaiController@addnilai')->name('insert.nilai');
-      Route::delete('/deletetugas/{id}', 'TugasController@destroy')->name('delete.tugas');
-      Route::get('/edittugas/{id}', 'TugasController@edit')->name('edit.tugas');
-      Route::post('/edittugas/{id}', 'TugasController@update')->name('update.tugas');
       /**============================= END Routing Nilai =============================**/
     });
 
