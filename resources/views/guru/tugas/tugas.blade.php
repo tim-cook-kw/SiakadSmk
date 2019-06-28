@@ -19,7 +19,7 @@
             <td>{{$no}}</td>
             <td>{{$item->tugas}}</td>
             <td>{{$item->id_kelas}}</td>
-            
+            <td><a  href="/guru/tugas/delet/{{$item->id}}" title="Delete"><i class="fa fa-trash" style="color:red;text-shadow:1px 1px 4px black; margin: 2px;"></i></a></td>
         </tr>
         
     </tbody>
